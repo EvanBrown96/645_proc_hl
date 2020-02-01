@@ -225,50 +225,198 @@ void z80::cpuStep() {
       AF.decHigh();
       break;
 
-    // AND B
-    case 0xA0:
-      AF.setHigh(AF.getHigh() | BC.getHigh());
-      break;
-
-    // AND C
-    case 0xA1:
-      AF.setHigh(AF.getHigh() | BC.getLow());
-      break;
-
-    // AND D
-    case 0xA2:
-      AF.setHigh(AF.getHigh() | DE.getHigh());
-      break;
-
-    // AND E
-    case 0xA3:
-      AF.setHigh(AF.getHigh() | DE.getLow());
-      break;
-
-    // AND H
-    case 0xA4:
-      AF.setHigh(AF.getHigh() | HL.getHigh());
-      break;
-
-    // AND L
-    case 0xA5:
-      AF.setHigh(AF.getHigh() | HL.getLow());
-      break;
-
-    // AND A
-    case 0xA7:
-      AF.setHigh(AF.getHigh() | AF.getHigh());
-      break;
-
     // HALT
     case 0x76:
       halted = 1;
       break;
 
-    // ADD A,B   Add  byte to a byte  result in A
+    // ADD B
     case 0x80:
       AF.setHigh(AF.getHigh() + BC.getHigh());
       //ignore setting flags for now
+      break;
+
+    // ADD C
+    case 0x81:
+      AF.setHigh(AF.getHigh() + BC.getLow());
+      //ignore setting flags for now
+      break;
+
+    // ADD D
+    case 0x82:
+      AF.setHigh(AF.getHigh() + DE.getHigh());
+      //ignore setting flags for now
+      break;
+
+    // ADD E
+    case 0x83:
+      AF.setHigh(AF.getHigh() + DE.getLow());
+      //ignore setting flags for now
+      break;
+
+    // ADD H
+    case 0x84:
+      AF.setHigh(AF.getHigh() + HL.getHigh());
+      //ignore setting flags for now
+      break;
+
+    // ADD L
+    case 0x85:
+      AF.setHigh(AF.getHigh() + HL.getLow());
+      //ignore setting flags for now
+      break;
+
+    // ADD A
+    case 0x87:
+      AF.setHigh(AF.getHigh() + AF.getHigh());
+      //ignore setting flags for now
+      break;
+
+    // SUB B
+    case 0x90:
+      AF.setHigh(AF.getHigh() - BC.getHigh());
+      //ignore setting flags for now
+      break;
+
+    // SUB C
+    case 0x91:
+      AF.setHigh(AF.getHigh() - BC.getLow());
+      //ignore setting flags for now
+      break;
+
+    // SUB D
+    case 0x92:
+      AF.setHigh(AF.getHigh() - DE.getHigh());
+      //ignore setting flags for now
+      break;
+
+    // SUB E
+    case 0x93:
+      AF.setHigh(AF.getHigh() - DE.getLow());
+      //ignore setting flags for now
+      break;
+
+    // SUB H
+    case 0x94:
+      AF.setHigh(AF.getHigh() - HL.getHigh());
+      //ignore setting flags for now
+      break;
+
+    // SUB L
+    case 0x95:
+      AF.setHigh(AF.getHigh() - HL.getLow());
+      //ignore setting flags for now
+      break;
+
+    // SUB A
+    case 0x97:
+      AF.setHigh(AF.getHigh() - AF.getHigh());
+      //ignore setting flags for now
+      break;
+
+    // AND B
+    case 0xA0:
+      AF.setHigh(AF.getHigh() & BC.getHigh());
+      break;
+
+    // AND C
+    case 0xA1:
+      AF.setHigh(AF.getHigh() & BC.getLow());
+      break;
+
+    // AND D
+    case 0xA2:
+      AF.setHigh(AF.getHigh() & DE.getHigh());
+      break;
+
+    // AND E
+    case 0xA3:
+      AF.setHigh(AF.getHigh() & DE.getLow());
+      break;
+
+    // AND H
+    case 0xA4:
+      AF.setHigh(AF.getHigh() & HL.getHigh());
+      break;
+
+    // AND L
+    case 0xA5:
+      AF.setHigh(AF.getHigh() & HL.getLow());
+      break;
+
+    // AND A
+    case 0xA7:
+      AF.setHigh(AF.getHigh() & AF.getHigh());
+      break;
+
+    // XOR B
+    case 0xA8:
+      AF.setHigh(AF.getHigh() ^ BC.getHigh());
+      break;
+
+    // XOR C
+    case 0xA9:
+      AF.setHigh(AF.getHigh() ^ BC.getLow());
+      break;
+
+    // XOR D
+    case 0xAA:
+      AF.setHigh(AF.getHigh() ^ DE.getHigh());
+      break;
+
+    // XOR E
+    case 0xAB:
+      AF.setHigh(AF.getHigh() ^ DE.getLow());
+      break;
+
+    // XOR H
+    case 0xAC:
+      AF.setHigh(AF.getHigh() ^ HL.getHigh());
+      break;
+
+    // XOR L
+    case 0xAD:
+      AF.setHigh(AF.getHigh() ^ HL.getLow());
+      break;
+
+    // XOR A
+    case 0xAF:
+      AF.setHigh(AF.getHigh() ^ AF.getHigh());
+      break;
+
+    // OR B
+    case 0xB0:
+      AF.setHigh(AF.getHigh() | BC.getHigh());
+      break;
+
+    // OR C
+    case 0xB1:
+      AF.setHigh(AF.getHigh() | BC.getLow());
+      break;
+
+    // OR D
+    case 0xB2:
+      AF.setHigh(AF.getHigh() | DE.getHigh());
+      break;
+
+    // OR E
+    case 0xB3:
+      AF.setHigh(AF.getHigh() | DE.getLow());
+      break;
+
+    // OR H
+    case 0xB4:
+      AF.setHigh(AF.getHigh() | HL.getHigh());
+      break;
+
+    // OR L
+    case 0xB5:
+      AF.setHigh(AF.getHigh() | HL.getLow());
+      break;
+
+    // OR A
+    case 0xB7:
+      AF.setHigh(AF.getHigh() | AF.getHigh());
       break;
 
     default:
