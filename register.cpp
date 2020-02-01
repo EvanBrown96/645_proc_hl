@@ -32,8 +32,23 @@ Register Register::setFull(Register r){
   return *this;
 }
 
+Register Register::operator++(){
+  value++;
+  return *this;
+}
+
 Register Register::operator++(int){
   value++;
+  return *this;
+}
+
+Register Register::operator--(){
+  value--;
+  return *this;
+}
+
+Register Register::operator--(int){
+  value--;
   return *this;
 }
 
@@ -44,5 +59,15 @@ Register Register::incHigh(){
 
 Register Register::incLow(){
   this->setLow(value+1);
+  return *this;
+}
+
+Register Register::decHigh(){
+  value -= 0x0100;
+  return *this;
+}
+
+Register Register::decLow(){
+  this->setLow(value-1);
   return *this;
 }

@@ -159,6 +159,107 @@ void z80::cpuStep() {
       BC.incHigh();
       break;
 
+    // DEC B
+    case 0x05:
+      BC.decHigh();
+      break;
+
+    // INC C
+    case 0x0C:
+      BC.incLow();
+      break;
+
+    // DEC C
+    case 0x0D:
+      BC.decLow();
+      break;
+
+    // INC D
+    case 0x14:
+      DE.incHigh();
+      break;
+
+    // DEC D
+    case 0x15:
+      DE.decHigh();
+      break;
+
+    // INC E
+    case 0x1C:
+      DE.incLow();
+      break;
+
+    // DEC E
+    case 0x1D:
+      DE.decLow();
+      break;
+
+    // INC H
+    case 0x24:
+      HL.incHigh();
+      break;
+
+    // DEC H
+    case 0x25:
+      HL.decHigh();
+      break;
+
+    // INC L
+    case 0x2C:
+      HL.incLow();
+      break;
+
+    // DEC L
+    case 0x2D:
+      HL.decLow();
+      break;
+
+    // INC A    Example for increments a particular byte
+    case 0x3C:
+      AF.incHigh();
+      //ignore setting flags for now
+      break;
+
+    // DEC A
+    case 0x3D:
+      AF.decHigh();
+      break;
+
+    // AND B
+    case 0xA0:
+      AF.setHigh(AF.getHigh() | BC.getHigh());
+      break;
+
+    // AND C
+    case 0xA1:
+      AF.setHigh(AF.getHigh() | BC.getLow());
+      break;
+
+    // AND D
+    case 0xA2:
+      AF.setHigh(AF.getHigh() | DE.getHigh());
+      break;
+
+    // AND E
+    case 0xA3:
+      AF.setHigh(AF.getHigh() | DE.getLow());
+      break;
+
+    // AND H
+    case 0xA4:
+      AF.setHigh(AF.getHigh() | HL.getHigh());
+      break;
+
+    // AND L
+    case 0xA5:
+      AF.setHigh(AF.getHigh() | HL.getLow());
+      break;
+
+    // AND A
+    case 0xA7:
+      AF.setHigh(AF.getHigh() | AF.getHigh());
+      break;
+
     // HALT
     case 0x76:
       halted = 1;
@@ -167,12 +268,6 @@ void z80::cpuStep() {
     // ADD A,B   Add  byte to a byte  result in A
     case 0x80:
       AF.setHigh(AF.getHigh() + BC.getHigh());
-      //ignore setting flags for now
-      break;
-
-    // INC A    Example for increments a particular byte
-    case 0x3C:
-      AF.incHigh();
       //ignore setting flags for now
       break;
 

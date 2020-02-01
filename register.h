@@ -13,11 +13,15 @@ public:
   Register setFull(uint16_t word);
   Register setFull(Register r);
 
+  Register operator++();
   Register operator++(int);
+  Register operator--();
+  Register operator--(int);
 
   Register incHigh();
   Register incLow();
-
+  Register decHigh();
+  Register decLow();
 private:
   uint16_t value;
 };
