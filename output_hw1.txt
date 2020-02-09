@@ -1,0 +1,59 @@
+PC: 0100, AF: 01b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000000
+instruction = 003c
+ PC: 0101, AF: 02b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000004
+instruction = 003c
+ PC: 0102, AF: 03b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000008
+instruction = 003c
+ PC: 0103, AF: 04b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000012
+instruction = 0080
+ PC: 0104, AF: 0cb0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000016
+instruction = 00a0
+ PC: 0105, AF: 08b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000020
+instruction = 00b3
+ PC: 0106, AF: 09b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000024
+instruction = 001c
+ PC: 0107, AF: 09b0, BC: 0804, DE: 0202, HL: 0000, SP: fffe
+totalClockCycles at 00000028
+instruction = 00b3
+ PC: 0108, AF: 0bb0, BC: 0804, DE: 0202, HL: 0000, SP: fffe
+totalClockCycles at 00000032
+instruction = 00a1
+ PC: 0109, AF: 00b0, BC: 0804, DE: 0202, HL: 0000, SP: fffe
+totalClockCycles at 00000036
+instruction = 000c
+ PC: 010a, AF: 00b0, BC: 0805, DE: 0202, HL: 0000, SP: fffe
+totalClockCycles at 00000040
+instruction = 00a1
+ PC: 010b, AF: 00b0, BC: 0805, DE: 0202, HL: 0000, SP: fffe
+totalClockCycles at 00000044
+instruction = 00aa
+ PC: 010c, AF: 02b0, BC: 0805, DE: 0202, HL: 0000, SP: fffe
+totalClockCycles at 00000048
+instruction = 0015
+ PC: 010d, AF: 02b0, BC: 0805, DE: 0102, HL: 0000, SP: fffe
+totalClockCycles at 00000052
+instruction = 00aa
+ PC: 010e, AF: 03b0, BC: 0805, DE: 0102, HL: 0000, SP: fffe
+totalClockCycles at 00000056
+instruction = 0076
+ PC: 010f, AF: 03b0, BC: 0805, DE: 0102, HL: 0000, SP: fffe
+totalClockCycles at 00000057
+Total Clock Cycles: 57
+Instruction 0x0c count is  0001
+Instruction 0x15 count is  0001
+Instruction 0x1c count is  0001
+Instruction 0x3c count is  0003
+Instruction 0x76 count is  0001
+Instruction 0x80 count is  0001
+Instruction 0xa0 count is  0001
+Instruction 0xa1 count is  0002
+Instruction 0xaa count is  0002
+Instruction 0xb3 count is  0002
+Halting now.

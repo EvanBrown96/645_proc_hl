@@ -66,11 +66,36 @@ void z80::initMemory() {
 }
 
 void z80::loadTest() {
-    writeByte(0x0100, 0x3C);
-    writeByte(0x0101, 0x3C);
-    writeByte(0x0102, 0x3C);
-    writeByte(0x0103, 0x80);
-    writeByte(0x0104, 0x76);
+    writeByte(0x0100, 0x04);
+    writeByte(0x0101, 0x05);
+    writeByte(0x0102, 0x0C);
+    writeByte(0x0103, 0x0D);
+    writeByte(0x0104, 0x14);
+    writeByte(0x0105, 0x15);
+    writeByte(0x0106, 0x1C);
+    writeByte(0x0107, 0x1D);
+    writeByte(0x0108, 0x24);
+    writeByte(0x0109, 0x25);
+    writeByte(0x010A, 0x2C);
+    writeByte(0x010B, 0X2D);
+    writeByte(0x010C, 0x3C);
+    writeByte(0x010D, 0x3D);
+    // writeByte(0x010E
+    // writeByte(0x010F
+    // writeByte(0x0110
+    // writeByte(0x0111
+    // writeByte(0x0112
+    // writeByte(0x0113
+    // writeByte(0x0114
+    // writeByte(0x0115
+    // writeByte(0x0116
+    // writeByte(0x0117
+    // writeByte(0x0118
+    // writeByte(0x0119
+    // writeByte(0x011A
+
+
+    writeByte(0x010E, 0x76);
 }
 
 void z80::loadFirst() {
@@ -214,7 +239,7 @@ void z80::cpuStep() {
       HL.decLow();
       break;
 
-    // INC A    Example for increments a particular byte
+    // INC A
     case 0x3C:
       AF.incHigh();
       //ignore setting flags for now
