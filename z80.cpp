@@ -52,16 +52,40 @@ void z80::initMemory() {
       instructionsCount[i]=0;
     }
 
-    int instructions_4_cycles[51] = {
-      0x04, 0x05, 0x0C, 0x0D, 0x14, 0x15,
-      0x1C, 0x1D, 0x24, 0x25, 0x2C, 0x2D, 0x3C, 0x3D, 0x80, 0x81, 0x82,
-      0x83, 0x84, 0x85, 0x87, 0x90, 0x91, 0x92, 0x93, 0x94, 0x95, 0x97, 0xA0,
-      0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD,
-      0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4, 0xB5, 0xB7
+    int instructions_4_cycles[] = {
+      0x04, 0x05, 0x0C, 0x0D, 0x14, 0x15, 0x1C, 0x1D, 0x24, 0x25, 0x2C, 0x2D,
+      0x3C, 0x3D, 0x41, 0x4A, 0x53, 0x78, 0x80, 0x81, 0x82, 0x83, 0x84, 0x85,
+      0x87, 0x90, 0x91, 0x92, 0x93, 0x94, 0x95, 0x97, 0xA0, 0xA1, 0xA2, 0xA3,
+      0xA4, 0xA5, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAF, 0xB0, 0xB1,
+      0xB2, 0xB3, 0xB4, 0xB5, 0xB7
     };
 
-    for(int i = 0; i < 51; i++){
+    for(int i = 0; i < 53; i++){
       clockCycles[instructions_4_cycles[i]] = 4;
+    }
+
+    int instructions_7_cycles[] = {
+      0x06, 0x0E, 0x16, 0x1E, 0x26, 0x2E, 0x3E, 0x46, 0x70
+    };
+
+    for(int i = 0; i < 9; i++){
+      clockCycles[instructions_7_cycles[i]] = 7;
+    }
+
+    int instructions_10_cycles[] = {
+      0x21, 0x36
+    };
+
+    for(int i = 0; i < 2; i++){
+      clockCycles[instructions_10_cycles[i]] = 10;
+    }
+
+    int instructions_11_cycles[] = {
+      0x34, 0x35
+    };
+
+    for(int i = 0; i < 2; i++){
+      clockCycles[instructions_11_cycles[i]] = 11;
     }
 }
 
@@ -114,6 +138,27 @@ void z80::loadFirst() {
     writeByte(0x010C, 0x15);
     writeByte(0x010D, 0xAA);
     writeByte(0x010E, 0x76);
+}
+
+void z80::loadSecond() {
+ writeByte(0x0100, 0x3C);
+ writeByte(0x0101, 0x3C);
+ writeByte(0x0102, 0x53);
+ writeByte(0x0103, 0x4A);
+ writeByte(0x0104, 0x41);
+ writeByte(0x0105, 0x78);
+ writeByte(0x0106, 0x06);
+ writeByte(0x0107, 0x47);
+ writeByte(0x0108, 0x26);
+ writeByte(0x0109, 0x02);
+ writeByte(0x010A, 0x2E);
+ writeByte(0x010B, 0x00);
+ writeByte(0x010C, 0x36);
+ writeByte(0x010D, 0x99);
+ writeByte(0x010E, 0x34);
+ writeByte(0x010F, 0x34);
+ writeByte(0x010F, 0x46);
+ writeByte(0x0110, 0x76);
 }
 
 
@@ -189,6 +234,11 @@ void z80::cpuStep() {
       BC.decHigh();
       break;
 
+    // LD B, *
+    case 0x06:
+      BC.setHigh(fetch());
+      break;
+
     // INC C
     case 0x0C:
       BC.incLow();
@@ -197,6 +247,11 @@ void z80::cpuStep() {
     // DEC C
     case 0x0D:
       BC.decLow();
+      break;
+
+    // LD C, *
+    case 0x0E:
+      BC.setLow(fetch());
       break;
 
     // INC D
@@ -209,6 +264,11 @@ void z80::cpuStep() {
       DE.decHigh();
       break;
 
+    // LD D, *
+    case 0x16:
+      DE.setHigh(fetch());
+      break;
+
     // INC E
     case 0x1C:
       DE.incLow();
@@ -217,6 +277,16 @@ void z80::cpuStep() {
     // DEC E
     case 0x1D:
       DE.decLow();
+      break;
+
+    // LD E, *
+    case 0x1E:
+      DE.setLow(fetch());
+      break;
+
+    // LD HL, **
+    case 0x21:
+      HL.setFull(readWord());
       break;
 
     // INC H
@@ -229,6 +299,11 @@ void z80::cpuStep() {
       HL.decHigh();
       break;
 
+    // LD H, *
+    case 0x26:
+      HL.setHigh(fetch());
+      break;
+
     // INC L
     case 0x2C:
       HL.incLow();
@@ -237,6 +312,28 @@ void z80::cpuStep() {
     // DEC L
     case 0x2D:
       HL.decLow();
+      break;
+
+    // LD L, *
+    case 0x2E:
+      HL.setLow(fetch());
+      break;
+
+    // INC (HL)
+    case 0x34: {
+      uint8_t data = readByte(HL.getFull()) + 1;
+      writeByte(HL.getFull(), data);
+    } break;
+
+    // DEC (HL)
+    case 0x35: {
+      uint8_t data = readByte(HL.getFull()) - 1;
+      writeByte(HL.getFull(), data);
+    } break;
+
+    // LD (HL), *
+    case 0x36:
+      writeByte(HL.getFull(), fetch());
       break;
 
     // INC A
@@ -250,9 +347,44 @@ void z80::cpuStep() {
       AF.decHigh();
       break;
 
+    // LD A, *
+    case 0x3E:
+      AF.setHigh(fetch());
+      break;
+
+    // LD B, C
+    case 0x41:
+      BC.setHigh(BC.getLow());
+      break;
+
+    // LD B, (HL)
+    case 0x46:
+      BC.setHigh(readByte(HL.getFull()));
+      break;
+
+    // LD C, D
+    case 0x4A:
+      BC.setLow(DE.getHigh());
+      break;
+
+    // LD D, E
+    case 0x53:
+      DE.setHigh(DE.getLow());
+      break;
+
+    // LD (HL), B
+    case 0x70:
+      writeByte(HL.getFull(), BC.getHigh());
+      break;
+
     // HALT
     case 0x76:
       halted = 1;
+      break;
+
+    // LD A, B
+    case 0x78:
+      AF.setHigh(BC.getHigh());
       break;
 
     // ADD B

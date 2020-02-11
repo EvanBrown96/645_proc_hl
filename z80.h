@@ -9,6 +9,7 @@ class z80 {
 	  static void initMemory();
 	  static void loadTest();
 	  static void loadFirst();
+    static void loadSecond();
     static void cpuStep();
   protected:
   private:
