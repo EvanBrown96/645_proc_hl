@@ -1,0 +1,55 @@
+PC: 0100, AF: 01b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000000
+instruction = 003c
+ PC: 0101, AF: 02b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000004
+instruction = 003c
+ PC: 0102, AF: 03b0, BC: 0804, DE: 0201, HL: 0000, SP: fffe
+totalClockCycles at 00000008
+instruction = 0053
+ PC: 0103, AF: 03b0, BC: 0804, DE: 0101, HL: 0000, SP: fffe
+totalClockCycles at 00000012
+instruction = 004a
+ PC: 0104, AF: 03b0, BC: 0801, DE: 0101, HL: 0000, SP: fffe
+totalClockCycles at 00000016
+instruction = 0041
+ PC: 0105, AF: 03b0, BC: 0101, DE: 0101, HL: 0000, SP: fffe
+totalClockCycles at 00000020
+instruction = 0078
+ PC: 0106, AF: 01b0, BC: 0101, DE: 0101, HL: 0000, SP: fffe
+totalClockCycles at 00000024
+instruction = 0006
+ PC: 0108, AF: 01b0, BC: 4701, DE: 0101, HL: 0000, SP: fffe
+totalClockCycles at 00000031
+instruction = 0026
+ PC: 010a, AF: 01b0, BC: 4701, DE: 0101, HL: 0200, SP: fffe
+totalClockCycles at 00000038
+instruction = 002e
+ PC: 010c, AF: 01b0, BC: 4701, DE: 0101, HL: 0200, SP: fffe
+totalClockCycles at 00000045
+instruction = 0036
+ PC: 010e, AF: 01b0, BC: 4701, DE: 0101, HL: 0200, SP: fffe
+totalClockCycles at 00000055
+instruction = 0034
+ PC: 010f, AF: 01b0, BC: 4701, DE: 0101, HL: 0200, SP: fffe
+totalClockCycles at 00000066
+instruction = 0046
+ PC: 0110, AF: 01b0, BC: 9a01, DE: 0101, HL: 0200, SP: fffe
+totalClockCycles at 00000073
+instruction = 0076
+ PC: 0111, AF: 01b0, BC: 9a01, DE: 0101, HL: 0200, SP: fffe
+totalClockCycles at 00000074
+Total Clock Cycles: 74
+Instruction 0x06 count is  0001
+Instruction 0x26 count is  0001
+Instruction 0x2e count is  0001
+Instruction 0x34 count is  0001
+Instruction 0x36 count is  0001
+Instruction 0x3c count is  0002
+Instruction 0x41 count is  0001
+Instruction 0x46 count is  0001
+Instruction 0x4a count is  0001
+Instruction 0x53 count is  0001
+Instruction 0x76 count is  0001
+Instruction 0x78 count is  0001
+Halting now.
